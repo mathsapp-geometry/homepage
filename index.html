@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MathsApp — A Working Group in Applied Geometry and Statistics</title>
+  <meta name="description" content="Homepage of the MathsApp research group in applied geometry and statistics.">
+
+  <!-- MathJax for LaTeX: use $...$ inline and $$...$$ for display -->
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #1c1c1e;
+      --muted: #6b6b70;
+      --accent: #1f4e8c;
+      --border: #e2e2e6;
+      --max: 56rem;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+      color: var(--fg);
+      background: var(--bg);
+    }
+    a { color: var(--accent); }
+    header, main, footer { max-width: var(--max); margin: 0 auto; padding: 0 1rem; }
+
+    header { padding-top: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    header h1 { margin: 0; font-size: 1.8rem; }
+    header p { margin: .25rem 0 0; color: var(--muted); }
+
+    nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; margin: 1rem 0 0; }
+    nav a { text-decoration: none; font-family: system-ui, sans-serif; font-size: .95rem; }
+    nav a:hover { text-decoration: underline; }
+
+    section { padding: 2rem 0 1rem; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    h2 { font-size: 1.4rem; margin-top: 0; }
+    h3 { font-size: 1.1rem; margin-bottom: .25rem; }
+
+    .members { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 1.25rem; }
+    .member img { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--border); border-radius: 4px; }
+    .member h3 { margin: .5rem 0 0; }
+    .member p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .news dt { font-weight: bold; font-family: system-ui, sans-serif; font-size: .9rem; color: var(--muted); }
+    .news dd { margin: 0 0 .75rem; }
+
+    table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+    th, td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+
+    footer { padding-top: 1.5rem; padding-bottom: 2rem; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>MathsApp</h1>
+    <p>A Working Group in Applied Geometry and Statistics</p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#seminar">Seminar</a></li>
+        <li><a href="#news">News</a></li>
+        <!-- <li><a href="#members">Members</a></li> -->
+        <li><a href="#research">Research</a></li>
+        <!-- <li><a href="#publications">Publications</a></li> -->
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        Short presentation of the group: its scope, main themes and
+        how it fits within the institution. For example: we study
+        $\dots$ with a focus on $\dots$.
+      </p>
+    </section>
+
+    <!-- <section id="news">
+      <h2>News</h2>
+      <dl class="news">
+        <dt>2026-10-01</dt>
+        <dd>New member / new paper / upcoming workshop.</dd>
+        <dt>2026-09-15</dt>
+        <dd>Another announcement.</dd>
+      </dl>
+    </section> -->
+
+    <section id="seminar">
+      <h2>Seminar</h2>
+      <p>Weekly on [day] at [time], room [X]. <a href="#">Subscribe to the mailing list</a> · <a href="#">Calendar (iCal)</a></p>
+
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Speaker</th><th>Title</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2026-10-20</td>
+            <td>Speaker (Institution)</td>
+            <td>Title of the talk <br><small>Abstract: …</small></td>
+          </tr>
+        </tbody>
+      </table>
+      <p><a href="#">Past talks</a></p>
+    </section>
+
+
+        <section id="research">
+      <h2>Research</h2>
+
+      <h3>Theme 1</h3>
+      <p>Brief description, key questions, main results.</p>
+
+      <h3>Theme 2</h3>
+      <p>Brief description, key questions, main results.</p>
+
+      <h3>Projects and funding</h3>
+      <ul>
+        <li>Project name — funding body, years.</li>
+      </ul>
+    </section>
+    
+  
+    <section id="contact">
+      <h2>Contact</h2>
+      <address>
+        MathsApp<br>
+        Laboratory, Institution<br>
+        Street address, City, Country<br>
+        <a href="mailto:contact@example.org">contact@example.org</a>
+      </address>
+    </section>
+  </main>
+
+  <footer>
+    <p> MathsApp · Last updated: 2026-10-13</p>
+  </footer>
+</body>
+</html>
