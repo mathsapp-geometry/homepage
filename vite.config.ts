@@ -3,8 +3,14 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
+// GitHub Pages serves this repo from a subdirectory:
+// https://mathsapp-geometry.github.io/homepage/
+// The `base` option makes all asset URLs resolve correctly there.
+const base = '/homepage/';
+
 export default defineConfig(() => {
   return {
+    base,
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

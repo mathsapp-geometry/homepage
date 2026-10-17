@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MathsApp Working Group</title>
+  </head>
+  <body>
+    <!--
+      GitHub Pages serves this repo from a subdirectory:
+      https://mathsapp-geometry.github.io/homepage/
+
+      It does not rewrite URLs for single-page apps, so refreshing on a
+      sub-route (e.g. /homepage/events) returns this 404.html.
+      We redirect to index.html, passing the original route as a query param
+      so React Router can render the right page after load.
+    -->
+    <script type="text/javascript">
+      (function () {
+        var base = '/homepage/';
+        var path = window.location.pathname; // e.g. /homepage/events or /homepage/
+        var hash = window.location.hash;     // e.g. #section
+
+        if (path.indexOf(base) === 0) {
+          var route = path.slice(base.length) || '/'; // 'events' or '/'
+          window.location.replace(
+            base + 'index.html?__r=' + encodeURIComponent(route) + hash
+          );
+        } else {
+          window.location.replace(base + 'index.html');
+        }
+      })();
+    </script>
+  </body>
+</html>

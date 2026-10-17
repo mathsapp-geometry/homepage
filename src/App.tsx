@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ProposeTalkModal } from './components/ProposeTalkModal';
@@ -14,13 +14,34 @@ import { TalkProposal } from './types';
 export default function App() {
   const [isProposeModalOpen, setIsProposeModalOpen] = useState(false);
   const [, setProposals] = useState<TalkProposal[]>([]);
+  const navigate = useNavigate();
 
   const handleProposalSubmitted = (newProposal: TalkProposal) => {
     setProposals((prev) => [newProposal, ...prev]);
   };
 
+  // GitHub Pages serves this repo from /homepage/ and does not rewrite URLs for
+  // single-page apps. When a user refreshes on a sub-route, 404.html redirects
+  // here with the original route in the ?__r= query param. Restore it so the
+  // right page renders instead of always falling back to the home page.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const route = params.get('__r');
+    if (route) {
+      // Drop the __r param from the URL without adding a history entry.
+      window.history.replaceState(
+        {},
+        '',
+        window.location.pathname + window.location.hash
+      );
+      navigate(route, { replace: true });
+    }
+  }, [navigate]);
+
   return (
-    <BrowserRouter>
+    // basename tells React Router the app lives under /homepage/ so all routes
+    // and navigations stay inside the GitHub Pages subdirectory.
+    <BrowserRouter basename="/homepage">
       <div className="min-h-screen bg-[#f0f2f5] text-slate-900 flex flex-col font-sans">
         {/* Navigation Top Bar */}
         <Header onOpenProposeModal={() => setIsProposeModalOpen(true)} />

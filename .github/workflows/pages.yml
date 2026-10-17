@@ -1,5 +1,6 @@
 # GitHub Pages deployment for the MathsApp homepage.
-# Publishes the static index.html on every push to main.
+# Builds the Vite/React app and publishes it on every push to main.
+# The site is served from a subdirectory: https://mathsapp-geometry.github.io/homepage/
 
 name: Deploy to GitHub Pages
 
@@ -26,17 +27,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Pages serves whatever is inside the uploaded directory.
-      - name: Prepare site
-        run: |
-          mkdir -p public
-          cp index.html public/
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
 
+      - name: Install dependencies
+        # The repo's lockfile is bun.lock; npm install with --legacy-peer-deps is
+        # used because vite@8 requires a newer esbuild than the root declares
+        # (an optional peer, harmless for the build).
+        run: npm install --legacy-peer-deps
+
+      - name: Build site
+        run: npm run build
+
+      - name: Copy SPA 404 fallback into dist
+        run: cp 404.html dist/
+
+      # Pages serves whatever is inside the uploaded directory.
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: public
+          path: dist
 
       - id: deployment
         uses: actions/deploy-pages@v4
